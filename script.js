@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Movie of the day
 // @namespace    https://raw.githubusercontent.com/kmanijak/filmweb-pick-movie
-// @version      0.1
+// @version      0.2
 // @updateURL    https://raw.githubusercontent.com/kmanijak/filmweb-seen-movies-hider/master/script.js
 // @description  Choose randomly the movie to watch
 // @author       Karol Manijak
@@ -23,19 +23,21 @@ GM_addStyle(
     ));
     const movies = document.querySelectorAll('.item.place');
     const notSeenMovies = getNotSeenMovies();
-    const randomMovie = notSeenMovies[Math.floor(Math.random() * notSeenMovies.length)];
-    randomMovie.style.borderColor = '#eab30b';
-    const poster = randomMovie.querySelector('.filmPoster__image');
-    const src = poster.getAttribute('data-src');
-    if (src) {
-        poster.setAttribute('src', src);
+    if (notSeenMovies.length) {
+        const randomMovie = notSeenMovies[Math.floor(Math.random() * notSeenMovies.length)];
+        randomMovie.style.borderColor = '#eab30b';
+        const poster = randomMovie.querySelector('.filmPoster__image');
+        const src = poster.getAttribute('data-src');
+        if (src) {
+            poster.setAttribute('src', src);
+        }
+
+        const anchorPlace = document.querySelector('.ranking__user-see-info');
+
+        const header = document.createElement('h5');
+        header.innerHTML = 'Nie wiesz co obejrzeć? Propozycja na dziś to'
+        header.className = 'header';
+        anchorPlace.appendChild(header);
+        anchorPlace.appendChild(randomMovie);
     }
-
-    const anchorPlace = document.querySelector('.ranking__user-see-info');
-
-    const header = document.createElement('h5');
-    header.innerHTML = 'Nie wiesz co obejrzeć? Propozycja na dziś to'
-    header.className = 'header';
-    anchorPlace.appendChild(header);
-    anchorPlace.appendChild(randomMovie);
 })();
