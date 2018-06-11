@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         Movie of the day
-// @namespace    https://raw.githubusercontent.com/kmanijak/filmweb-pick-movie/master/script.js
+// @namespace    https://raw.githubusercontent.com/kmanijak/filmweb-pick-movie
 // @version      0.1
+// @updateURL    https://raw.githubusercontent.com/kmanijak/filmweb-seen-movies-hider/master/script.js
 // @description  Choose randomly the movie to watch
 // @author       Karol Manijak
 // @match        http://www.filmweb.pl/ranking/*
